@@ -35,6 +35,8 @@ class Request {
     $this->ch = curl_init($url);
     curl_setopt($this->ch, CURLOPT_ENCODING, "");
     curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
+    //the following will remove Warning regarding incorrect SSL Certs.
+    curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($this->ch, CURLOPT_HEADERFUNCTION, array(&$this, "callback_CURLOPT_HEADERFUNCTION"));
 
     //use HTTP-Proxy
